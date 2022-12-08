@@ -1,58 +1,57 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function generatePassword(chosenLength, chosenLowercase, chosenUppercase, chosenNumbers, chosenSymbols) {
-// 1. prompt the user for the password criteria
-//  a.  Password length 8 - 128
-//  b.  Lowercase, Uppercase, numbers, special characters
+function generatePassword() {
 
-const confirmLength =  prompt("How many characters would you like your password to contain? between 8 - 128 characters", "");
-const confirmLowercase = confirm ("click okay to confirm including lower case characters");
-const confirmUppercase = confirm ("click okay to confirm including upper case characters");
-const confirmNumbers = confirm ("click okay to confirm including numeric characters");
-const confirmSymbols = confirm ("click okay to confirm including special characters");
-
-  function chosenLength(){
-  var passwordLength = Number(window.prompt);
-  confirmLength = passwordLength.value;
-  console.log(passwordLength.value);
-  // for (var i=0; i < length; i++){
-  //   Math.floor(math.random() * passwordLength.length)};
-  } 
-  // else {(!passwordLength)} 
-  // return "No Password Generated";}
+  var failPassword = document.querySelector("#password")
 
 
-function randomLowercase() {
-  const lowerCase = 'abcdefghijklmnopqrstuvwxyz';
-  if (confirmLowercase === true);
- return lowerCase[Math.floor(Math.random() * lowerCase.length)];
- chosenLowercase = randomLowercase.value
-}
+  var confirmLength =  prompt("How many characters would you like your password to contain? between 8 - 128 characters", "");
+  if (isNaN(confirmLength)) {
+  confirmLength = prompt("Please enter a number within the range 8 - 128")
+  } else if (confirmLength > 128) {
+  confirmLength = prompt("Please enter number within the range 8 - 128")
+  } else if (confirmLength < 8) {
+  confirmLength = prompt("Please enter number within the range 8 - 128");
+  }
+console.log(confirmLength);
+  var characters = [""];
+  var password = [""];
 
-function randomUppercase(){
-  const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  if (confirmUppercase === true);
-  return upperCase[Math.floor(Math.random() * upperCase.length)];
-}
+  var confirmLowercase = confirm ("click okay to confirm including lower case characters");
+  const lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  if (confirmLowercase === true) {
+  var availableCharacters = characters.concat(lowerCase);
+  };
 
-function randomNumbers(){
+  var confirmUppercase = confirm ("click okay to confirm including upper case characters");
+  const upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  if (confirmUppercase === true){
+  var availableCharacters = characters.concat(lowerCase, upperCase)
+  };
+
+  var confirmNumbers = confirm ("click okay to confirm including numeric characters");
   const numbers = [1,2,4,5,6,7,8,9,0];
-  if (confirmNumbers === true);
-  return numbers[Math.floor(Math.random() * numbers.length)];
-}
+  if (confirmLowercase, confirmUppercase, confirmNumbers === true) {
+  var availableCharacters = characters.concat(lowerCase, upperCase, numbers);
+  };
 
-function randomSymbols(){
-  const symbols = '!#$%&()*+,-./:;<=>?@[]^_`~';
-  if (confirmSymbols === true);
-  return symbols[Math.floor(Math.random() * symbols.length)];
-}
-}
+  var confirmSymbols = confirm ("click okay to confirm including special characters");
+  const symbols = ["!","#","$","%","&","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","~"];
+  if (confirmSymbols === true) {
+  var availableCharacters = characters.concat(lowerCase, upperCase, numbers, symbols);
+  };
 
+  if (availableCharacters = []) {
+    failPassword = "Unable to Generate Password";
+  }
 
-// 2. Validate the input
-// 3. generate password based on criteria
-// 4. Display the generated password on the page
+  for (var i=0; i < confirmLength; i++){
+  Math.floor(Math.random() * availableCharacters.length);
+  var passwordText = confirmLength[i];
+  };
+
+}
 
 
 // Write password to the #password input
@@ -65,4 +64,5 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword); {
+};
